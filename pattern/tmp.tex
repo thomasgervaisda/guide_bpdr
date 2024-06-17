@@ -1,0 +1,63 @@
+
+\documentclass{book}
+    % General document formatting
+    \usepackage[margin=0.7in]{geometry}
+    \usepackage[parfill]{parskip}
+    \usepackage[utf8]{inputenc}
+    \usepackage{url}
+    % Related to math
+    \usepackage{amsmath,amssymb,amsfonts,amsthm}
+    \usepackage{comment}
+    \usepackage{glossaries}
+    \usepackage{biblatex}
+
+%Bibliographie
+\bibliography{ressources/biblio.bib}
+
+%Index
+\makeindex 
+
+%Glossaire
+\makenoidxglossaries
+\loadglsentries{ressources/glossaire}
+
+
+\begin{document}
+
+
+
+\begin{comment}
+\begin{enumerate}
+	\item Grand-1
+        \begin{enumerate}
+            \item Petit-a
+            \item Petit-b
+            \item Petit-c
+        \end{enumerate}
+	\item Grand-2
+        \begin{enumerate}
+            \item Petit-a
+            \item Petit-b
+            \item Petit-c
+        \end{enumerate}
+	\item Grand-3
+        \begin{enumerate}
+            \item Petit-a
+            \item Petit-b
+            \item Petit-c
+        \end{enumerate}
+\end{enumerate}
+
+\begin{itemize}
+    \item [Liens]
+        \url{http://...}\\
+        \url{http://...}\\
+        \url{http://...}\\
+    \item [Mots clé]
+        \gls{Mot1},\gls{Mot2}
+\end{itemize}
+\end{comment}
+
+\printnoidxglossaries
+
+\end{document}

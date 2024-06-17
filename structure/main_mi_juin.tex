@@ -1,0 +1,1360 @@
+\documentclass{book}
+\pagestyle{plain}
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern} 
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{csquotes}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{comment}
+\usepackage{glossaries}
+\usepackage{imakeidx} 
+\usepackage{tabularx}
+\usepackage[style=authoryear]{biblatex} %style=apa 
+\DeclareLanguageMapping{french}{french-apa}
+\usepackage{emptypage}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{enumitem}
+
+\newenvironment{titlemize}[1]{%
+  \paragraph{#1}
+  \begin{itemize}}
+  {\end{itemize}}
+
+%Ne pas afficher "Chapitre"
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont}{}{0pt}{\Huge}
+
+%Chaque section sur une nouvelle page
+\newcommand{\sectionbreak}{\clearpage}
+\geometry{hmargin=2.5cm,vmargin=1.5cm}
+
+%Bibliographie
+\bibliography{ressources/biblio.bib}
+
+%Index
+\makeindex 
+
+%Glossaire
+\makenoidxglossaries
+\loadglsentries{ressources/glossaire}
+
+\title{Guide de bonnes pratiques de partage et de valorisation des données linguistiques}
+\author{Thomas Gervais d'Aldin}
+
+
+\begin{document}
+
+%Glossaire
+
+%\input{ressources/glossaire.tex}
+
+%Page de garde
+\maketitle
+
+%Table des matières
+\tableofcontents
+\clearpage
+
+
+
+\chapter*{Introduction}
+
+\begin{enumerate}
+	\item Contexte au LT2D
+        \begin{enumerate}
+            \item Le LT2D développe des projets de recherche dans le domaine des lexiques, des textes, des discours et des dictionnaires.
+            %\item Le laboratoire a besoin de renforcer ses efforts concernant les Humanités Numériques par l'entretien et la mise à jour de ressources numériques existantes (ex: Musée Virtuel des Dictionnaires, Petit Larousse 1905 informatisé ...) ainsi que la création de nouvelles ressources visant à \textbf{valoriser les travaux de recherche du laboratoire}.
+            \item La CPJ a pour objectif le renforcement des travaux autour des Humanités Numériques au LT2D par la création de nouvelles ressources et par 
+            \item Un objectif plus spécifique : la création et la diffusion de ressources visant à \textbf{valoriser les travaux de recherche du labo}
+            \item Parmi ces nouvelles ressources : le guide 
+        \end{enumerate}
+	\item Objectifs à l'issue de l'étude du guide
+        \begin{enumerate}
+            \item Comprendre les enjeux de la \gls{scienceouverte} et l'intérêt du chercheur à porter attention aux bonnes pratiques dans la constitution et dans l'usage de ses données
+            \item Contexte éthique et légal à définir en amont
+            \item Stratégies de planification avant la constitution d'un jeu de données
+            \item Différents leviers de valorisation des jeux de données
+            \item Re-direction vers diverses ressources pour approfondir en fonction de ses besoins
+        \end{enumerate}
+\end{enumerate}
+
+\begin{itemize}
+    \item [Liens]
+        \url{https://lt2d.cyu.fr/version-francaise/politique-scientifique-et-themes-de-recherche/themes-de-recherche}\\
+        \url{https://www.ouvrirlascience.fr/deuxieme-plan-national-pour-la-science-ouverte-pnso/}\\
+    \item [Mots clé]
+        \gls{scienceouverte}, \gls{ddr}
+\end{itemize}
+
+
+
+\begin{comment}	      
+	      Ce guide s'adresse aux chercheurs en SHS et en linguistique (voir le détail des cibles au fur et à mesure) réalisé au laboratoire LT2D dans le cadre de la chaire de Marine Delaborde, enseignante chercheuse à Cergy Paris Université. Celui-ci à pour objectif d'indiquer des recommandations et des bonnes pratiques en matière de constitution et de valorisation de jeux de données à but de recherche scientifique. Le guide vise à renseigner l'utilisateur sur des questions préalables à la constitution d'un jeu de données jusqu'à la mise en valeur de ces jeux de données, donc des travaux du chercheur (c'est l'idée, à reformuler). Il pointe vers différentes ressources utiles à l'utilisateur, sites d'informations, guides, dépots, et organismes spécialisés.
+
+       
+	      
+	      à intégrer : Le  guide est produit dans le cadre de la chaire de professeure junior
+	   
+        Financé par l'ANR
+        Fait au labo, décrit en fonctions des axes du labo
+        Mentionner CERGY, on a accès aux ressources, mentionner la BU. 
+
+        Parler de qui est visé par le guide ? 
+	      
+	      
+	      	      
+	      Le LT2D développe des projets de recherche dans le domaine des lexiques, des textes, des discours et des dictionnaires. Conformément à son histoire auparavant écrite au sein de l'UMR LDI, elle-même développée dans la lignée de l'équipe Métadif fondée par le Professeur Jean Pruvost, le LT2D continue de s’inscrire dans le panorama scientifique de CY Cergy Paris Université à travers les domaines de spécialité et d'expertise illustrés par ses thèmes de recherche. 
+	      	      
+	      Les thèmes de recherche du laboratoire peuvent être regroupés autour de deux thèmes principaux :\\
+	      
+	             
+	             
+	      \begin{description}
+	      	
+	      	       
+	      	\item[Langues, Lexiques, Dictionnaires]
+	      	Le thème 1 du laboratoire est centré sur des problématiques liées au lexique et à la lexicographie. Il s’intéresse aussi bien à l’émergence, l’évolution et l’analyse du lexique à partir de corpus variés (analyse des textes littéraires et non littéraires en diachronie et en synchronie, étude des dictionnaires, observation de corpus oraux) qu’aux discours sur la langue française par le prisme des « opérateurs discursifs » ou de la métalexicographie. Un intérêt particulier est porté au statut du français mais aussi des langues et des variétés en présence et à leur dénomination ainsi qu’aux manifestations langagières des phénomènes identitaires sous-jacents qui les traversent. L’approche didactique est également présente. Deux sous-thèmes se répartissent les thématiques de recherche et s’appuient notamment sur le fonds lexicographique très important du laboratoire historique Métadif.
+	      		      	
+	      	\item[Textes, Discours, Édition]
+	      	Ce thème s’intéresse à la circulation et la diffusion des idées, des concepts et des discours dans un monde de plus en plus globalisé, ainsi qu’à leur édition et leur réception. Les chercheurs développent leurs recherches sur les transferts intellectuels qui modifient les représentations, questionnent les hiérarchies culturelles et interrogent les stéréotypes. L’interculturel, le comparatisme et l’interdisciplinarité caractérisent les projets développés dans ce thème. La vie de l’esprit à l’échelle internationale, les liens entre les réseaux intellectuels en France et dans d’autres pays européens (notamment l’Europe médiane) et extra-européens (plus particulièrement l’Amérique Latine), les circuits éditoriaux, l’analyse de la traduction, les politiques culturelles et la mise en évidence des lieux de convivialité culturelle intéressent les chercheurs impliqués dans ce thème. Une réflexion sur la conscience européenne et son rapport aux autres cultures, sur les concepts spécifiques utilisés par différentes aires culturelles, sur les incommunications qui peuvent en résulter fait également l’objet des recherches menées. L’étude des spécificités discursives des différentes sources de communication, comme les médias, les discours des hommes et femmes politiques et l’expression de la société civile intéressent également le travail de recherche de cet axe. 
+	      \end{description}      
+\end{comment}
+
+\chapter{Enjeux de la valorisation des données de la recherche}
+
+\section*{(Introduction partie 1)}
+
+\begin{enumerate}
+	\item Définir les \gls{ddr}
+        \begin{enumerate}
+            \item Définition officielle de l'OCDE : ensemble des informations collectées, produites et utilisées dans le but d'un travail scientifique.
+            \item Mais définition large > Elle est à adapter à chaque domaine. \autocite{rebouillat:tel-02447653} 
+            \item En linguistique, on les définit par un ensemble d'enregistrements écrits, ou oraux
+            \item Les volumes croissants de données linguistiques induisent le besoin d'organisation et de gestion des corpus \autocite{minel:halshs-01590750} 
+        \end{enumerate}
+	\item Pourquoi diffuser les \gls{ddr} ?
+        \begin{enumerate}
+            \item Poser le contexte, faire référence au récent Plan National pour la \gls{scienceouverte} (Open data)
+            \item Le partage et l’ouverture des données de la recherche favorisent leur réutilisation par vous-même et par les autres : des membres de l’équipe de votre projet, de votre équipe de recherche, communauté scientifique dans son ensemble. (CF: Ouvrir la science)
+            \item Des données bien constituées = plus de \textbf{visibilité} (articles scientifiques basés sur des données ouvertes sont 25\% plus cités)
+            \item Des données bien constituées = plus \textbf{reproductibles}, donc atteste de l'intégrité scientifique, en les rendant les hypothèse plus facilement vérifiables. Si les données bien constituées ne sont pas utilisées entièrement ou du tout dans le travail du chercheur, elles pourront être reprises par d'autres, possiblement dans d'autres disciplines.
+        \end{enumerate}
+\end{enumerate}
+
+\begin{itemize}
+    \item [Liens]
+        \url{https://www.ouvrirlascience.fr/wp-content/uploads/2024/03/24-02-22-Donnees-FR-WEB.pdf}\\
+        \url{https://shs.hal.science/tel-02447653v1}\\
+        \url{https://shs.hal.science/halshs-01590750}\\
+    \item [Mots clé]
+        \gls{ddr}
+\end{itemize}
+
+
+\section{Sauvegarder les travaux}
+
+\begin{enumerate}
+    %Part1
+    \item Contexte
+        \begin{enumerate}
+            \item La préservation de l'information est une phase essentielle de la gestion des données. Le dépôt des données dans un entrepôt assure leur sauvegarde et leur disponibilité ce qui facilite leur partage et leur réutilisation.
+            \item Jusqu'à récemment, les données de la recherche avaient une durée de vie très courte, car des standards de conservation n'étaient pas encore définis.
+            \item Conserver les données dans un environnement sécurisé
+            \item Gestion des modalités de partage par l'attribution de licences de diffusion
+        \end{enumerate}
+    %Part2
+	\item Degrés de préservation
+     3 grands concepts :  le stockage de la sauvegarde et de l'archivage (graduel du - pérenne au + pérenne)
+            \begin{itemize}
+                \item [\textbf{Le stockage}]
+                Le dépôt des données sur un support numérique accessible, physique (disque personnel ou partagé, serveur) ou dématérialisé (cloud) dans un but d'exploitation à court terme
+                \begin{center}
+                \big\downarrow    
+                \end{center}
+                \item [\textbf{La sauvegarde}]
+                La duplication des données sur un support externe à celui sur lesquelles elles sont stockées. Elle sécurise les données à moyen terme, permettant de les restaurer en cas de dégradation ou de perte ou d'inaccessibilité au support de stockage. La sauvegarde fait l'objet d'une stratégie définissant la fréquence des sauvegardes en fonction de la criticité des données pour le projet.
+                \begin{center}
+                \big\downarrow    
+                \end{center}
+                \item [\textbf{L'archivage}]
+                L'archivage  consiste à ranger un document dans un lieu où il sera conservé pendant une période plus ou moins longue et d’y associer les moyens pour réutiliser les données : la réutilisation se faisant en ajoutant de l’intelligence à la sauvegarde. Le contenu des documents archivés n’est pas modifiable. Par contre le contenant (format) des documents archivés peut être modifié (pour éviter l’obsolescence logicielle)   
+            \end{itemize}
+	\item Les bonnes pratiques à mettre en place
+        \begin{enumerate}
+            \item Avant de commencer la constitution, prévoir multiples supports de sauvegarde : sur l'ordinateur de travail directement, sur un disque externe pour un back-up, sur une plate-forme cloud (de préférence spécialisée, éviter les outils GAFAM.)
+            \item Conserver un historique des sauvegardes (type git)
+            \item Privilégier sur les dépôts spécialisés pour pérenniser les données. (NAKALA, ORTHOLANG ...)
+        \end{enumerate}
+\end{enumerate}
+
+\begin{itemize}
+    \item [Liens]
+        \autocite{hadrossek:hal-03152732}
+        \url{https://bu.univ-lille.fr/chercheurs-doctorants/science-ouverte/donnees-de-recherche/sauvegarde-et-stockage-des-donnees}\\
+    \item [Mots clé]
+        \gls{ddr}, \gls{entrepot_ddr}, \gls{criticite},\gls{sauvegarde},\gls{archive}
+\end{itemize}
+
+
+\section{Donner de la visibilité à ses travaux}
+%à faire
+\begin{enumerate}
+	\item Respect des bonnes pratiques = plus de visibilité
+        \begin{enumerate}
+            \item Identité numérique cohérente
+            \item \gls{doi} lié à chacun de ses travaux
+            \item Importance de rendre les références à ses travaux accessibles et lisibles par les machines, au delà de simplement ses travaux
+        \end{enumerate}
+	\item Meilleure garantie de transparence de la recherche
+        \begin{enumerate}
+            \item CF la réutilisation plus loin : si les travaux sont dispo et bien référencés, ils seront plus probablement repris pour d'autres travaux ou pour reproduction de l'experience
+            \item Valoriser le travail de l’équipe en matière de production, de gestion, de description et de partage des données de recherche. L’attribution d’identifiants pérennes tels que l’identifiant ORCID pour les chercheuses et chercheurs et le DOI pour les jeux de données facilite la citation et la mise en visibilité des données produites.
+        \end{enumerate}
+    \item Modes de publication
+    \begin{enumerate}
+        \item Privilégier la publication en revue en accès ouvert
+        \item Dépôt dans une archive ouverte
+    \end{enumerate}
+	\item Autres leviers de visibilité
+        \begin{enumerate}
+            \item Réseaux sociaux académiques
+            \item Réseaux spécialisés
+        \end{enumerate}
+\end{enumerate}
+
+\begin{itemize}
+    \item [Liens]
+        \url{https://libguides.biblio.usherbrooke.ca/valorisation/recherche/visibilite}\\
+        \url{https://oa100.snf.ch/wp-content/uploads/2020/09/augmenter-visibilite-impact-publication-scientifique-maitrisant-sept-2020.pdf}\\
+        \url{https://www.ouvrirlascience.fr/wp-content/uploads/2023/10/Livret_pour_impression.pdf}\\
+    \item [Mots clé]
+         \gls{ddr}, \gls{bibliometrie}, \gls{h_index}
+\end{itemize}
+
+\section{Assurer la réutilisation}
+\begin{enumerate}
+	\item Pourquoi les réutiliser ?
+        \begin{enumerate}
+            \item Trop de données ne sont pas visibles / réutilisées
+            \item Coûts financiers et humains importants à la production de nouvelles données
+	      	\item Nouvelle analyse sur un autre projet de recherche
+        \end{enumerate}
+	\item Question économique
+        \begin{enumerate}
+            \item  La réutilisation dans le cadre d'appels à projets peut être fortement encouragée voire requise pour le financement
+            \item La vérification de la conformité étique et légale des données est déjà faite.
+        \end{enumerate}
+	\item Exploitation du plein potentiel scientifique des données
+        \begin{enumerate}
+            \item Faire un comparatif avec un nouveau jeu de données (complètement différent ou l'ancien jeu mis à jour)
+	      	\item L'évolution des outils d'évaluation peut apporter un nouveau regard sur les recherches passées
+            \item La reproductibilité d'une théorie est essentielle à sa validation. 
+        \end{enumerate}
+    \item Les bonnes pratiques à mettre en place
+        \begin{enumerate}
+            \item Choisir une licence de diffusion adaptée à ses données, de façon à ce qu'elle respectent le principe \textit{" le plus ouvert possible, aussi fermé que nécessaire "}
+        \end{enumerate}
+\end{enumerate}
+
+\begin{itemize}
+    \item [Liens]
+        \url{https://sciencespo.libguides.com/donnees-de-la-recherche/endetails/Reutilisables}\\
+        \url{http://...}\\
+    \item [Mots clé]
+        \Gls{ddr}, \Gls{licence_de_diffusion}
+\end{itemize}
+
+\section{Sécuriser le financement}
+
+Financement public 
+Beaucoup d'infos sur le site de l'ANR
+
+\begin{enumerate}
+	\item Appels à projet
+        \begin{enumerate}
+            \item Financement public > Crédits alloués sur la base d'appels à projets compétitifs
+            \item Grands piliers des processus de selections: \textbf{Intégrité, déontologie, confidentialité des informations, et transparence des processus}
+        \end{enumerate}
+	\item Respect des principes de la science ouverte > favorise le financement.
+        \begin{enumerate}
+            \item Petit-a
+            \item Petit-b
+            \item Petit-c
+        \end{enumerate}
+	\item En pratique
+        \begin{enumerate}
+            \item Planification type DMP fortement recommandée ou imposée par la tutelle ou l'agence de financement d'un projet. (plus loin)
+            \item Mise à disposition des données, pouvant être planifiée dès l'appel à projet (via un DMP ou autre)
+            \item Petit-c
+        \end{enumerate}
+\end{enumerate}
+
+\begin{itemize}
+    \item [Liens]
+        \url{https://anr.fr/fr/lanr/nous-connaitre/processus-de-selection/}\\
+        \url{http://...}\\
+        \url{http://...}\\
+    \item [Mots clé]
+        \gls{pgd},\gls{scienceouverte}
+\end{itemize}
+
+\begin{enumerate}
+	\item Conditions
+	      \begin{enumerate}
+	      	\item Planification type DMP fortement recommandée ou imposée par la tutelle ou l'agence de financement d'un projet.
+            \item Crédits alloués sur la base d'appels à projets compétitifs
+            
+	      \end{enumerate}
+\end{enumerate}
+
+\chapter{Préparatifs à la constitution d'un jeu de données}
+
+% Construire une intro partie 2 une fois qu'on est à peu près fixés sur la structure.
+\section*{(Introduction partie 2)}
+
+\begin{enumerate}
+	\item Idée de faire lma 
+        \begin{enumerate}
+            \item Petit-a
+            \item Petit-b
+            \item Petit-c
+        \end{enumerate}
+	\item Grand-2
+        \begin{enumerate}
+            \item Petit-a
+            \item Petit-b
+            \item Petit-c
+        \end{enumerate}
+	\item Grand-3
+        \begin{enumerate}
+            \item Petit-a
+            \item Petit-b
+            \item Petit-c
+        \end{enumerate}
+\end{enumerate}
+
+\begin{itemize}
+    \item [Liens]
+        \url{http://...}\\
+        \url{http://...}\\
+        \url{http://...}\\
+    \item [Mots clé]
+        \gls{Mot1},\gls{Mot2}
+\end{itemize}
+
+
+\section{Principes étiques et légaux}
+
+\subsection{Les principes FAIR}
+
+\begin{enumerate}
+	\item Faciliter la découverte des données
+	      \begin{enumerate}
+	      	\item Les données ont un identifiant unique pérenne (PID ou DOI) pour assurer l'accès à la ressource.
+	      	\item Les données sont décrites par des métadonnées scientifiques et documentaires
+	      	\item Les données, ou au moins leurs métadonnées, sont indexées ou enregistrées dans un outil de recherche, par exemple à travers le dépôt des données
+	      \end{enumerate}
+	\item Interopérabilité des données aux différents environnements informatiques utilisés par les humains et les machines.
+	      \begin{enumerate}
+	      	\item Élaboration d'un vocabulaire contrôlé (glossaire, lexique, liste de mots clés)
+	      	\item Faire référence aux autres données en relations, citées ou non dans le travail dans les métadonnées
+	      \end{enumerate}
+	\item Accès aux données
+	      \begin{enumerate}
+	      	\item Sur internet en libre consultation
+	      	\item Sur des plateformes et dépots, aux membres en accès restreint
+	      \end{enumerate}
+	\item Réutilisation des données
+	      \begin{enumerate}
+	      	\item Attribution de licences de réutilisation
+	      	\item Provenance des données
+	      	\item Structure conformes aux standards de la communauté pour faciliter leur ré-emploi et leur analyse
+	      \end{enumerate}
+\end{enumerate}
+
+\begin{itemize}
+    \item [Liens]
+        \url{https://www.ccsd.cnrs.fr/principes-fair/}\\
+        \url{https://www.ouvrirlascience.fr/fair-principles/}\\
+        \url{http://...}\\
+    \item [Mots clé]
+        \gls{ddr}, \gls{fair}, \gls{scienceouverte}, \gls{metadonnees},\gls{licence_de_diffusion}
+\end{itemize}
+
+\subsection{Cycle de vie des données}
+
+\begin{enumerate}
+	\item [Définition]
+    Le cycle de vie des données présente le processus de production, d’utilisation et de conservation ou destruction des données dans une organisation. Il liste les différentes étapes et les acteurs intervenants.
+    Le cycle de vie des données s’applique à l’ensemble des données des organisations. Il permet de repérer la manière d’utiliser les données en fonction de leurs caractéristiques et de préciser les différents usages des données en fonction de leur spécificité. Il présente les différentes interventions nécessaires tout au long de la vie des données dans et hors de l’organisation.
+    \item Étapes
+        \begin{itemize}
+        \item [\textbf{Planification}]
+        \item Définir le projet de recherche et anticiper les prochaines étapes du cycle de vie des données
+        \item Anticiper la façon dont les données seront obtenues et stockées pour faciliter la traçabilité en amont afin de permettre la réutilisation des données
+        \item [\textbf{Collecte}]
+        \item Les données utilisées peuvent avoir plusieurs origines : elles peuvent être créées, modifiées, réutilisées
+        \item [\textbf{Organisation et analyse}]
+        \item Organiser ses données pendant le projet est une étape importante car elle facilitera la gestion du cycle de vie
+        \item Garantir l’identification, la localisation, la protection et l’accès à ces données
+        \item [\textbf{Conservation}]
+        \item Mise en sécurité et sureté des données traitées
+        \item Multiplication des supports de sauvegarde (physiques, serveurs, cloud)
+        \item[\textbf{Partage}]
+        \item Une fois que les données d’un projet sont nettoyées et stabilisées, il est important de penser à les publier
+        \item Les données de la recherche peuvent être publiées via un dépôt disciplinaire, institutionnel ou plus généraliste tel que l’entrepôt national Recherche Data Gouv
+        \item Recommandé de publier ces jeux de données dans un entrepôt sécurisé générant automatiquement un \gls{doi} \\(Digital Object Identifier)
+        \item[\textbf{Réutilisation}]
+        \item Elles peuvent servir à d’autres travaux scientifiques permettant de faire avancer ou tester de nouvelles hypothèses
+        \end{itemize}
+    \item En savoir plus sur les bonnes pratiques
+    \begin{enumerate}
+        \item Faire un inventaire des outils et sites informatifs.
+    \end{enumerate}
+\end{enumerate}
+
+\begin{itemize}
+    \item [Liens]
+        \url{https://opendatafrance.gitbook.io/kit-de-ressources-odf/fiches-pratiques/comprendre/comprendre-le-cycle-de-vie-des-donnees}\\
+        \url{https://www.universite-paris-saclay.fr/recherche/science-ouverte/le-cycle-de-vie-des-donnees}\\
+        \url{http://...}\\
+    \item [Mots clé]
+        \gls{ddr}, \gls{pgd}, \gls{rgpd}, \gls{doi}
+\end{itemize}
+
+\subsection{RGPD}
+
+\begin{enumerate}
+    \item Contexte
+    \begin{enumerate}
+        \item Multiplication récente des masses de données numériques
+        \item Des données à caractère personnel et intime sont générées par tous nos services (médical, bancaire, professionnel ...)
+        \item Il fallait que le système législatif s'adapte à cette transformation
+        \item En 2012, l'Europe lance un chantier de grande rénovation du cadre législatif qui donnera suite à l'adoption en 2016 puis la mise en application en 2018 du RGPD
+        \item Son respect est un fondement éthique de la recherche en SHS
+        \item Le non respect du RGPD expose à des sanctions juridiques et financières
+    \end{enumerate}
+	\item Définition \\
+        Le Règlement Général sur la Protection des données a été conçu pour protéger les citoyens dans le contexte des GAFAM qui utilisent en masse nos données personnelles. Il encadre le traitement de données à caractère personnel c'est à dire " la collecte, l’enregistrement, l’organisation, la structuration, la conservation, l’adaptation ou la modification, l’extraction, la consultation, l’utilisation, la communication par transmission, la diffusion ou toute autre forme de mise à disposition, le rapprochement ou l’interconnexion, la limitation, l’effacement ou la destruction " (art. 4 du Règlement européen du 27 avril 2016) 
+        
+	\item Degrés de sensibilité des données\\
+    \begin{tabular}{|l|l|p{6cm}|}
+         \hline
+         Moins protégées& Non personnelles &Les données non personnelles sont des données qui n’ont pas besoin de protection particulière. (Ex: mail d'accueil d'une entreprise, adresse d'une entreprise ...) \\
+         \big\downarrow & Personnelles &Une donnée à caractère personnel désigne toute information se rapportant à une personne identifiée ou identifiable. Une personne est identifiable quand elle peut être identifiée directement ou indirectement. 
+         Directement : avec un nom, une photo, vidéo
+         Indirectement : par recoupement de plusieurs données, par exemple, grâce à une date de naissance \textbf{et} une adresse postale\\
+         Plus protégées & Sensibles & Les données dites sensibles sont de nature confidentielles. Leur traitement est très strictement encadré par le Règlement Européen, et nécessite le consentement explicite de la personne concernée (Exemple : santé physique ou mentale, appartenance à un syndicat, opinions politiques ou religieuses, origine ethnique, données génétiques, biométriques...) \\
+         \hline
+    \end{tabular}
+    \\
+    \item Stratégies de désidentification des données
+    Souigner l'importance de choisir une stratégie adaptée à son projet si nécessaire.
+    \begin{itemize}
+        \item [Anonymisation]
+        \item Consiste à rendre \textbf{impossible} toute identification de la personne 
+        \item Deux principales méthodes d'anonymisation
+        \begin{itemize}
+            \item [La \textbf{randomisation}:]
+            Modifier les attributs de telle sorte qu'ils soient moins précis, tout en conservant la répartition globale. Par exemple, si l'on permute les dates de naissances des individus, on empêche le recoupement avec cette donnée, mais l'on peut conserver la répartition des âges dans l'échantillon. 
+            Il convient de mentionner l'action dans la description des données
+            \item[La \textbf{généralisation}:]
+            Modifier l'échelle des attributs ou leur ordre de grandeur, afin de s'assurer qu'ils soient commun à un ensemble de personne. Par exemple, en agrégeant des adresses postales à l'échelle d'une ECPI ou d'une ville. 
+        \end{itemize}
+        \item [Pseudonymisation]
+                \item C'est un traitement de données réalisé de manière à ce qu'on ne puisse plus attribuer les données relatives à une personne physique sans information supplémentaire (comme un identifiant, un alias ou un numéro séquentiel). 
+    \end{itemize}
+    \item Pour quoi faire ?
+        \begin{enumerate}
+            \item S'assurer qu'on reste dans le cadre de la loi
+            \item Bon respect des pratiques éthiques, donc plus de visibilité, plus de chances que les travaux soient cités ou repris. 
+        \end{enumerate}
+\end{enumerate}
+
+\begin{itemize}
+    \item [Liens]
+        \url{https://oeilpouroeilcreations.fr/formations/gdpr}\\
+        \url{https://www.ofis-france.fr/espaces-thematiques/integrite-scientifique-ethique-de-la-recherche-deontologie/}\\
+        \url{https://oxfamilibrary.openrepository.com/bitstream/handle/10546/621092/gd-research-ethics-practical-guide-091120-fr.pdf;jsessionid=C534B7C3F2572B2BA687EF10C277C8E7?sequence=17}\\
+        \url{https://u-paris.fr/societes-humanites/deontologie-ethique-de-la-recherche-et-integrite-scientifique/ethique-de-la-recherche/}\\
+        \autocite{delmotte:hal-01940124}\\
+        \autocite{bouchetmoneret:hal-03636697}\\
+    \item [Mots clé]
+        \gls{anonymisation},\gls{pseudonymisation},\gls{rgpd}
+\end{itemize}
+
+\section{Planification et spécificités liées aux pratiques}
+
+\subsection{Élaborer un DMP (Plan de Gestion de Données)}
+
+\begin{enumerate}
+	\item Définition
+     Le Data Management Plan (DMP) ou Plan de Gestion de Données (PGD) est un document synthétique qui aide à organiser et anticiper toutes les étapes du cycle de vie de la donnée. Il explique pour chaque jeu de données comment seront gérées les données d’un projet, depuis leur création ou collecte jusqu’à leur partage et leur archivage.
+	\item DMP Opidor  
+        \begin{enumerate}
+            \item Outil mis à disposition par le CNRS
+            \item Accès à des modèles de DMP
+            \item Facilite la rédaction
+            \item Guides et exemples personnalisés
+        \end{enumerate}
+\end{enumerate}
+
+\begin{itemize}
+    \item [Liens]
+        \url{https://dmp.opidor.fr/}\\
+        \url{https://doranum.fr/plan-gestion-donnees-dmp/plan-de-gestion-des-donnees-fiche-synthetique_10_13143_cgv4-0k53/}\\
+        \url{http://...}\\
+    \item [Mots clé]
+        \gls{pgd},
+\end{itemize}
+
+\section{Pratiques propres aux différents formats}%Pratiques propres aux différents formats (2.2.2.) à développer. Structure complète à trouver. 
+
+\subsubsection{Corpus écrits} 
+
+\begin{enumerate}
+    \item Les pratiques
+        \begin{enumerate} 
+        	\item Dictionnaires
+                \begin{titlemize}{Mise en place du standard}
+                     \item Au début de la numérisation, chaque maison d'édition à son propre langage
+                     \item Premier standard > le SGML, mais trop permissif > XML >  création et adoption du format TEI
+                \end{titlemize}
+                \begin{titlemize}{Avantages de la TEI}
+                     \item Permet d'encoder des textes et documents numériques, particulièrement répandu dans les SH
+                     \item Shéma de balisage riche et flexible, adapté aux besoin des lexicographes
+                     \item Oblige la présence d'un header (md), ce qui permet une bonne tracabilité/normalisation 
+                     \item Possibilité de hierarchie des documents
+                     \item La TEI est active et maintenue.
+                \end{titlemize}
+                \begin{titlemize}{à introduire}
+                    \item Omeka
+                \end{titlemize}
+        \begin{titlemize}{Lexiques}
+            \item 
+            \item Formats LMF : Standard ISO pour les lexiques du TAL.
+            \item Formats de tables classiques
+            \item Format CONLL : décrit des données textuelles sous forme de colonne selon un nombre d'attributs catégorie d'entité nommée, nature grammaticale.
+            \item à approfondir quand tu vas explorer les lexiques ORTOLANG
+        \end{titlemize}
+        \begin{titlemize}{Thesaurus} 
+            \item Format skos:
+        \end{titlemize}
+        \begin{titlemize}{Bitextes}
+            \item format TMX, ou btxt.
+            \item 
+            \item Pour ML, il existe des solutions open source pour entrainer ses propres modèles (openNMT), plutot facile d'accès, mais demande de grosses quantités de données avec d'obtenir des résultats satisfaisants
+        \end{titlemize}
+        \begin{titlemize}{Corpus de copies d'élèves}
+            \item  Corpus E-CALM écriture scolaire (ORTOLANG)
+        \end{titlemize}
+        \begin{titlemize}{notes}
+            \item Dans quelle catégorie pour le format CONNL (commun à quelles pratiques ?)
+        \end{titlemize}
+        \end{enumerate}
+        
+\end{enumerate}
+
+\begin{itemize}
+    \item [Liens]
+        \autocite{mangeot:hal-00959229}\\
+        \url{https://omeka.org/}\\
+        \url{http://www.lexicalmarkupframework.org/}\\
+    \item [Mots clé]
+        \gls{tei},\gls{tei_header}, \gls{langage_de_balisage}, \gls{xml}, \gls{tmx}, \gls{metadonnees}, \gls{lmf}
+\end{itemize}
+
+\subsubsection{Corpus oraux}
+
+\begin{enumerate}
+\item Pré requis et méthodologie de constitution
+    \begin{enumerate}
+        \item Pour constituer un corpus oral, le linguiste doit définir une méthodologie :
+        \begin{itemize}
+            \item \textbf{Objectifs de recherche visés }: si l’utilisateur veut construire un
+                  corpus pour étudier le vocabulaire des jeunes, il ne choisira pas les
+                  situations d’enregistrement de la même façon que s’il veut travailler
+                  sur les interactions de service.
+            \item \textbf{Type de corpus} : si le but est de constituer un corpus de référence,
+                  plusieurs critères interviennent en parallèle pour obtenir une meilleure
+                  représentativité possible.
+            \item \textbf{Modalités d’enregistrement des données}: si le corpus est
+                  construit pour travailler sur les caractéristiques acoustiques d’un son,
+                  il est important que les enregistrements soient faits dans des situations
+                  expérimentales optimales
+        \end{itemize}
+        \item Formulaires présentés aux volontaires pour enregistrement
+        \item Protocoles (TFC ...)
+        \end{enumerate}
+\item Autres éléments à intégrer
+    \begin{enumerate}
+        \item Présentation du Corpus de référence du français parlé \autocite{delic:halshs-01388193}
+        \item Les grands corpus du français moderne \autocite{wissner:hal-03604977}
+        \item Corpus de la parole : collecte, catalogage, conservation et diffusion des ressources orales sur le français et les langues de France \autocite{jacobson:halshs-01165884}
+    \end{enumerate}
+\item Peut-être aborder ces sujet (attention listing)
+    \begin{enumerate}
+	   \item [Enregistrements]
+	   \item [Discours]
+	   \item[Vidéo]
+    \end{enumerate}
+\end{enumerate}
+
+
+\begin{enumerate}
+    \item Présentation du Corpus de référence du français parlé \autocite{delic:halshs-01388193}
+    \item Les grands corpus du français moderne \autocite{wissner:hal-03604977}
+    \item Corpus de la parole : collecte, catalogage, conservation et diffusion des ressources orales sur le français et les langues de France \autocite{jacobson:halshs-01165884}
+\end{enumerate}
+\begin{enumerate}
+	\item [Enregistrements]
+	\item [Discours]
+	\item[Vidéo]
+\end{enumerate}
+
+\begin{itemize}
+    \item [Liens]
+        \url{http://...}\\
+        \url{http://...}\\
+        \url{http://...}\\
+    \item [Mots clé]
+        %\gls{Mot1},\gls{Mot2}
+\end{itemize}
+
+
+\chapter{Ressources et outils}
+
+
+\section{Se former}
+
+\subsection{Se former en ligne}
+
+\subsubsection{Se former à la science ouverte}
+
+\begin{enumerate}
+	\item DoRANum
+        \begin{enumerate}
+            \item DoRANum est une plateforme de formation en ligne sur la gestion et le partage des données de la recherche selon les principes FAIR (Facile à trouver, Accessible, Interopérable et Réutilisable), réalisée par l’Inist-CNRS et le GIS « Réseau Urfist » depuis 2015.
+            \item 130 ressources pédagogiques numériques réparties dans plusieurs thématiques générales et disciplinaires, qui permettent aux chercheurs et doctorants de se former selon leurs besoins et selon leurs niveaux de connaissance. 
+            \item La plupart des ressources pédagogiques sont librement réutilisables et adaptables.
+            \item \url{https://doranum.fr/}
+        \end{enumerate}
+	\item OPIDoR (Optimiser le Partage et l’Interopérabilité des Données de la Recherche)
+        \begin{enumerate}
+            \item Portail mis à la disposition de la communauté 
+            \item Petit-b
+            \item Petit-c
+            \item \url{https://opidor.fr/}
+        \end{enumerate}
+	\item FUN Mooc ( France Université Numérique )
+        \begin{enumerate}
+            \item Plateforme proposant une grande variété de MOOC gratuits
+            \item Propose des modules pour se former à la science ouverte
+            \item \url{https://www.fun-mooc.fr/fr/}
+        \end{enumerate}
+    \item CoopIST
+        \begin{enumerate}
+            \item Site sectoriel de la Délégation à l'information scientifique et à la science ouverte du CIRAD ( Organisme français de recherche agronomique )
+            \item Propose un ensemble de fiches synthétiques sur la gestion de données et sur différents aspect de la recherche. 
+            \item \url{https://coop-ist.cirad.fr/lettre-coopist}
+        \end{enumerate}
+
+\begin{itemize}
+    \item [Liens]
+        \url{http://...}\\
+        \url{http://...}\\
+        \url{http://...}\\
+    \item [Mots clé]
+        \gls{scienceouverte},\gls{ddr}
+\end{itemize}
+\end{enumerate}
+
+\subsubsection{Se former au numérique}
+
+\begin{enumerate}
+	\item FUN Mooc ( France Université Numérique )
+        \begin{enumerate}
+            \item Plateforme proposant une grande variété de MOOC gratuits
+            \item Nombreux mooc gratuits sur l'initiation à l'informatique ( python, shell bash ... ) et sur les techniques de traitement de données textuelles ( manipulation, machine learning ... )
+            \item \url{https://www.fun-mooc.fr/fr/}
+        \end{enumerate}  
+    \item Mate-SHS
+        \begin{enumerate}
+            \item Réseau de professionnels de la recherche traitement des données appliquées au SHS
+            \item Propose les Tuto@Mate, séminaires de méthodes librement visionnables sur Youtube qui présentent différents outils numériques appliqués aux SHS.
+        \end{enumerate}
+\end{enumerate}
+
+\subsection{Se former en ateliers}
+
+\begin{enumerate}
+	\item Formations bibliothèque CYU
+        \begin{enumerate}
+            \item Formations à la recherche documentatire, services d'appui à la recherche
+            \item Possibilité de prendre rdv pour ces formations sur demande par mail à bu-formation@ml.u-cergy.fr
+        \end{enumerate}
+	\item Séminaires de l'école doctorale
+        \begin{enumerate}
+            \item Demander le programme aux doctorants
+        \end{enumerate}
+\end{enumerate}
+
+\begin{itemize}
+    \item [Liens]
+        \url{https://bibliotheque.cyu.fr/version-francaise/se-former/se-former}\\
+        \url{http://...}\\
+        \url{http://...}\\
+    \item [Mots clé]
+%        \gls{Mot1},\gls{Mot2}
+\end{itemize}
+
+
+\section{Bases de corpus}
+
+\subsection*{Introduction}
+
+
+\begin{itemize}
+    \item [Liens]
+        \url{https://books.openedition.org/septentrion/119418?lang=fr}\\
+        \url{https://wiki.frantext.fr/bin/view/Main/Manuel%20d%27utilisation/Corpus/}\\
+        \url{https://www.sketchengine.eu/comment-creer-un-corpus-a-partir-dinternet/}\\
+        \url{https://gallica.bnf.fr/accueil/fr/content/accueil-fr?mode=desktop/}\\
+    \item [Mots clé]
+%        \gls{Mot1},\gls{Mot2}
+\end{itemize}
+
+ORTOLANG/NAKALA et les corpus dispo dessus > Exemple via des corpus, aussi parler d'autres gros corpus plus 'industriels'
+
+
+\subsection{Corpus de presse}%Préciser pour chaque ressource ce que l’on a le droit de faire (ex : citation dans les articles ou utilisation dans les corpus). Plus explicite. Point technique et légal spécifique à ces ressources : intégration dans son corpus ou citation d’exemples dans un article scientifique.  Renvoi éventuel à la partie des licences.
+
+\begin{enumerate}
+	\item EUROPRESSE 
+        \begin{enumerate}
+            \item Europresse est une base de presse et actualités comportant plus de 8000 sources d’information reconnues : presse régionale, nationale et internationale, ressources généraliste et spécialisée, sites Web, télévision et radio, biographies, etc.
+            \item Elle vous permet d’interroger et consulter en texte intégral des articles de publications couvrant diverses thématiques, et parfois même directement les versions PDF des journaux et revues
+            \item Cette base est accessible gratuitement et intégralement à l'ensemble des étudiants de CYU et de nombreux autres établissements
+            \item Accès par CYU \url{https://cyu.libguides.com/az.php}
+        \end{enumerate}
+    \item FACTIVA
+    \begin{enumerate}
+        \item Factiva est un outil d'information professionnelle de la société Dow Jones \& Company. Factiva agrège des contenus provenant à la fois de sources sous licence et gratuites, et apporte aux entreprises des fonctionnalités de recherche, d'alerte, de diffusion et de gestion de l'information.
+        \item Accès par CYU \url{https://cyu.libguides.com/az.php}
+    \end{enumerate}
+    \begin{titlemize}{Droits d'usage}
+        \item Articles de presse =  soumis aux Licence Creative Commons (Attribution - Pas d’Utilisation Commerciale - Pas de modifications) pour la grande majorité.
+        \item Cette licence permet le droit à la citation courte\ref{droit_citation_courte} 
+        \item Chaque revue de presse dispose de sections fournies qui détaillent les conditions d'utilisation de leur contenu
+        \item Elles proposent également des formulaires de contact des auteurs, si un transfert de droit est nécessaire au travail en question ( traduction par exemple ) 
+        \item Pour plus d'informations sur les licences\ref{licences}
+        
+    \end{titlemize}
+
+	      		      	      		   
+\end{enumerate}
+    
+
+\subsection{Corpus d'oeuvres littéraires}%Préciser pour chaque ressource ce que l’on a le droit de faire (ex : citation dans les articles ou utilisation dans les corpus). Plus explicite. Point technique et légal spécifique à ces ressources : intégration dans son corpus ou citation d’exemples dans un article scientifique.  Renvoi éventuel à la partie des licences.
+\begin{enumerate}
+	\item Projet Gutenberg
+        \begin{enumerate}
+            \item Le projet Gutenberg est une bibliothèque de versions électroniques libres
+            \item Les textes fournis sont essentiellement du domaine public soit parce qu'ils n'ont jamais été sujets à des droits d'auteur, soit parce que ces derniers sont expirés. Il contient toutefois quelques textes toujours sous droit d'auteur, qui sont rendus disponibles pour le projet avec la permission de l'auteur.
+            \item Accès: \url{https://gutenberg.org/}
+            
+             \begin{titlemize}{Droits d'usage}
+                \item Le principe même du projet est de réunir un corpus libre de droit, et tout usage (même commercial) des corpus est autorisé. 
+                \item Pas de restriction quant à la modification des données (plutôt encouragé même pour normaliser des données déstinées à des traitements.)
+                \item Lorsque des projets de recherche sur le corpus du projet Gutenberg, il est recommandé de le citer, mais ce n'est même pas obligatoire.
+                \item Pour plus d'informations sur les licences\ref{licences}
+	      	\end{titlemize}
+        
+        \end{enumerate}
+        
+	\item Frantext 
+        \begin{enumerate}
+            \item La base Frantext est conçue pour permettre des recherches de mots, lemmes et expressions régulières dans un corpus donné.
+            \item Frantext est une base de données comportant 5658 références, soit 270 millions de mots en Décembre 2023. Développée à l’ATILF (Analyse et Traitement Informatique de la Langue Française), elle est disponible en ligne depuis 1998.
+            \item Elle permet de faire des recherches simples et complexes sur des formes, des lemmes ou des catégories grammaticales et d’afficher les résultats dans un contexte de 700 signes
+            \item Les versions numériques des textes libres de droits sont téléchargeables
+            \item Accès par CYU \url{https://cyu.libguides.com/az.php}
+            
+             \begin{titlemize}{Droits d'usage}
+                \item La base FRANTEXT départage clairement ses oeuvres libres de droits, ses oeuvres soumises à des droits.
+                \item Pour les oeuvres libres de droit
+                \item Pour les oeuvres soumises à des droits d'auteurs, le droit à la citation courte est toujours légitime\ref{droit_citation_courte}. 
+                \item Pour plus d'informations sur les licences\ref{licences}
+	      	\end{titlemize}
+
+        \end{enumerate}
+    \item Google Books et Ngram viewer % ressource interrogeable à déplacer
+    
+        \begin{enumerate}
+        
+            \item Google Books = Banque d'oeuvres, certaines libres ( domaine public ) et entièrement consultables, d'autres soumis à des droits d'auteurs. 
+            \item Quand droit d'auteurs >> Extraits disponibles, avec l'accord à Google de l'auteur ou éditeur
+            \item Ngram Viewer est une application linguistique proposée par Google, permettant d’observer l’évolution de la fréquence d’un ou de plusieurs mots ou groupes de mots à travers le temps dans les sources imprimées. L’outil est entré en service en 2010. La dernière mise à jour de ce moteur de recherche web date de février 2021.
+            \item Le terme « ngram » désigne dans ce contexte une suite de « n » mots, ce qui est un cas particulier de la notion de n-gramme.
+
+        \end{enumerate} 
+
+        \begin{titlemize}{Droits d'usage}
+            \item Google Books : Pour les oeuvres libres >> idem que pour Gutenberg
+            \item Pour les oeuvres soumis à des droits d'auteurs >> droit citation courte \ref{droit_citation_courte}
+            \item Pour créer des corpus >>> oeuvres libres seulement.
+            \item Utilisable librement par navigateur, possibilité de reprendre les graphes en citant.
+        \end{titlemize}
+            
+              
+    \end{enumerate}
+    
+    
+\subsection{Corpus moissonnés sur le web }%Préciser pour chaque ressource ce que l’on a le droit de faire (ex : citation dans les articles ou utilisation dans les corpus). Plus explicite. Point technique et légal spécifique à ces ressources : intégration dans son corpus ou citation d’exemples dans un article scientifique.  Renvoi éventuel à la partie des licences.
+\begin{enumerate}
+
+    \item Common Corpus
+        \begin{enumerate}
+            \item Le plus gros corpus de textes de textes libres de droits de 500M de mots
+            \item Crée par la start-up Pleias, soutenue par les acteurs de la science ouverte
+            \item But : pouvoir entrainer des modèles de langages sur des données libres et transparentes.
+            \item Librement réutilisable pour la recherche, pour constituer des corpus.
+        \end{enumerate}
+    \item FRWaC
+        \begin{enumerate}
+            \item Corpus du français de 1.6M de tokens
+            \item Méthodologie étique, transparente, reproductible, mais des lacunes (soulignées par les auteurs) pour statuer son echantillonage et pour retracer précisément l'origine de tout.
+        \end{enumerate}
+    \item Paracrawl
+        \begin{enumerate}
+            \item Enorme corpus de segments tirées d'internet, monotexte et bitextes (EN>[41 langues]) 
+            \item initiative européenne, soucieuse du respect de l'éthique et de la loi
+            \item Licence : Creative Commons CC0 license ("no rights reserved")\ref{cczero}.
+        \end{enumerate}
+        
+        \begin{titlemize}{Droits d'usage}
+            \item Pour certains corpus, respect des droits d'auteurs flou
+            \item Utilisés surtout pour le ML, utiles si vous voulez entrainer vos propre modèles "de zéro" ( de nombreux modèles pré-entrainés sont disponible sur le web )
+            \item N'utiliser que si les droits sont clairement explicités ( comme Paracrawl, Common Corpus )
+            \item Le droit à la citation courte est toujours de rigueur \ref{droit_citation_courte}
+            \item Pour plus d'informations sur les licences\ref{licences}
+        \end{titlemize}
+    
+\end{enumerate}
+
+\begin{itemize}
+    \item [Liens] % TAPOR, CORLI, lelien en favori / 
+        \url{https://www.sketchengine.eu/frwac-french-corpus/#toggle-id-1}\\
+        \url{https://commoncrawl.org/research-papers}\\
+        \url{https://repository.ortolang.fr/api/content/cefc-orfeo/4/documentation/site-orfeo/corpus-source/index.html}\\
+        \url{https://paracrawl.eu/}\\
+        \url{https://commoncrawl.org/}\\ 
+        Base textuelle FRANTEXT, ATILF - CNRS\& Université de Lorraine. Site internet : \url{http://www.frantext.fr}. Version décembre 2016.\\
+        \autocite{wissner:hal-03604977}
+    \item [Mots clé]
+         \gls{corpus},\gls{licence_de_diffusion},\gls{ddr}
+\end{itemize}
+
+
+\subsection{Banques grammaticales (arbres) }
+\begin{enumerate}
+	\item UD
+        \begin{enumerate}
+            \item Universal Dependencies (UD) est un projet qui consiste en  une banques d'arbres de dépendances cohérentes d'un point de vue interlinguistique pour de nombreuses langues, dans le but de faciliter le développement d'analyseurs multilingues, l'apprentissage interlinguistique et la recherche sur l'analyse syntaxique du point de vue de la typologie des langues. Le schéma d'annotation est basé sur une évolution des dépendances Stanford (universelles), des étiquettes universelles de partie de discours de Google, et de l'interlingua Interset pour les étiquettes morphosyntaxiques. La philosophie générale est de fournir un inventaire universel de catégories et de lignes directrices pour faciliter l'annotation cohérente de constructions similaires à travers les langues, tout en permettant des extensions spécifiques à la langue si nécessaire.
+            \item Droits d'usage : Libre (open source)
+        \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+\section{Gestionnaires de corpus}
+\begin{enumerate}
+	\item Sketch Engine
+        \begin{enumerate}
+            \item Sketch Engine est un gestionnaire de corpus et un outil d'analyse textuelle développé par Lexical Computing Limited. Son objectif est de permettre aux personnes qui étudient les langues (lexicographes, chercheurs en linguistique de corpus, traducteurs ou apprenants en langues) ou quiconque qui souhaite trouver des exemples authentiques de rechercher de grandes collections de textes selon des requêtes complexes.
+            \item Droits d'usage : Contient de nombreux corpus libres de droit / Logiciel propriétaire (non open source)
+            \item Source : \url{https://bu.univ-lyon3.fr/sketch-engine-un-outil-pour-ceux-qui-etudient-les-langues}
+        \end{enumerate}
+	\item CQPweb
+        \begin{enumerate}
+            \item Petit-a
+            \item Petit-b
+            \item Petit-c
+        \end{enumerate}
+	\item Grand-3
+        \begin{enumerate}
+            \item Petit-a
+            \item Petit-b
+            \item Petit-c
+        \end{enumerate}
+\end{enumerate}
+
+\begin{itemize}
+    \item [Liens]
+        \url{http://...}\\
+        \url{http://...}\\
+        \url{http://...}\\
+    \item [Mots clé]
+%        \gls{Mot1},\gls{Mot2}
+\end{itemize}
+
+\section{Lexiques}
+
+\begin{enumerate}
+    \item Morphalou
+        \begin{enumerate}
+            \item Morphalou3 est un lexique à large couverture. Les lexies sont accessibles par leurs formes lemmatiques (forme canonique non fléchie). À chacun de ces lemmes sont associées toutes ses formes fléchies (déclinaisons et conjugaisons du lemme).
+            \item Droits d'usage : licence LGPL-LR (Lesser General Public License For Linguistic Resources)
+        \end{enumerate}
+    \item Leff
+        \begin{enumerate}
+            \item 
+        \end{enumerate}
+\end{enumerate}
+
+\section{Textométrie}%Autres ressources de textométrie : distinguer les outils d’annotation de trameur et LeTrameur et mentionner que treetagger est une extension à ajouter (avec son modèle). 
+
+Définition de la textometrie : La textométrie est l’application de calculs sur des données textuelles : statistique lexicale, analyses factorielles, classifications.\url{ https://www.encyclopedie.fr/definition/Textom%C3%A9trie}
+
+\begin{enumerate}
+    \item Iramuteq
+    \begin{enumerate}
+        \item Iramuteq est une Interface de R pour les Analyses Multidimensionnelles de Textes et de Questionnaires, son fonctionnement consiste à préparer les données et écrire des scripts qui sont ensuite analysés dans le logiciel statistique R. Les résultats sont finalement affichés par l'interface.
+        \item Demande une installation de R et de python (facile à faire, possible à l'interface graphique)
+        \item Droits d'usage : Licence GNU GPL (licence libre)    
+    \end{enumerate}
+    
+    \item Le Trameur et iTrameur %aller voir l'onglet aide pour infos
+    \begin{enumerate}
+        \item Le Trameur est un programme de génération puis de gestion de la Trame et du Cadre d’un texte (i.e découpage en unité et partitionnement du texte : le métier textométrique) pour construire des opérations lexicométriques / textométriques (ventilation des unités, carte des sections, cooccurrence, spécificité, AFC…).
+        \item Le Trameur est compatible avec l'outil treetagger : système d’étiquetage automatique des catégories grammaticales des mots avec lemmatisation. Il permet aussi de généner et de gérer des annotations multiples sur les unités du texte (et de traiter les niveaux d’annotations visés)
+        \item iTrameur – Outils d’analyse textométrique de données est un ensemble d’outils en ligne comportant plusieurs fonctionnalités de l’analyse automatique de textes en vue de leur profilage sémantique, thématique et de leur interprétation. C'est une version en ligne du Trameur.
+        iTrameur est à l’origine un outil de textométrie. Il dispose aussi des fonctionnalités particulières qui permettent d’annoter dynamiquement des corpus ou d’explorer des ressources annotées (treebanks monolingues/multilingues) ou des alignements.
+        \item Sur le site de l'outil, seules les versions allégées sont directement téléchargeables. Ces version offrent exactement les mêmes fonctionnalités que les version complètes, à la différence qu'elles n'intègrent pas le module \textit{treetagger} ( outil d'étiquetage morpho-syntaxique). \textit{treetagger} est un outil libre et gratuit, mais ne peut pour des raisons de droits être directement intégrées à l'outil. Pour installer \textit{treetagger} sur l'interface, veuillez vous référer à la documentation de l'auteur fournie avec un tutoriel d'installation (accessible et réalisable à l'interface graphique).
+        \item Droit d'usage : Ouvert à la communauté scientifique
+    \end{enumerate}
+    
+	\item TXM
+        \begin{enumerate}
+            \item TXM est un logiciel de textométrie open-source et gratuit utilisé dans le traitement automatique du langage naturel, l'analyse de données textuelles, l'analyse du discours, l'analyse de contenu, la logométrie, la littérométrie, ou autres fouilles de textes effectuées en linguistique, mais aussi et de plus en plus, en sciences humaines et sociales (par exemple en sociologie1 et en géographie) et dans les autres disciplines connexes que regroupe le champ des humanités numériques.
+            \item Besoin de procéder à l'installation de treetagger manuellement
+            \item Droits d'usage : Libre (open source)
+        \end{enumerate}
+        
+    \item 1 ou 2 outils de textométrie en plus
+    
+\end{enumerate}
+
+    
+
+
+\begin{itemize}
+    \item [Liens]
+        \url{https://bu.univ-lyon3.fr/sketch-engine-un-outil-pour-ceux-qui-etudient-les-langues}\\
+        \url{https://universaldependencies.org/introduction.html}\\
+        \url{https://repository.ortolang.fr/api/content/morphalou/2/LISEZ_MOI.html#idp37270384}\\
+        \url{http://www.tal.univ-paris3.fr/trameur/iTrameur/}
+        \autocite{pincemin:halshs-02902088}\\
+        
+    \item [Mots clé]
+        %\gls{Mot1},\gls{Mot2}
+\end{itemize}
+
+\section{HN et Linguistique outillée (?) }%Conférences : faire plus synthétique : aide pour trouver les outils (ex : démos, ateliers, workshops, shared tasks). D’abord méthodo puis exemples. Faire générique : citer les conférences et parler des concepts généraux.Chercher d’autres catalogues pour les outils. / renvoyer vers les formations (MATE)
+
+
+\subsection*{Quelques taches et outils de TAL pour le linguiste}
+\begin{enumerate}
+	\item Segmentation ( Tokenization )
+        \begin{enumerate}
+            \item Processus de segmentation du textes en unités appellées "tokens" ( élément de base d'annotation )
+            \item Ces unités peuvent prendre la forme de "mots", de "sous-mots", de phrases ...
+            \item Cette opération est la première étape de tout traitement de données textuelles en TAL
+        \end{enumerate}
+	\item Reconnaissance d'entités nommées (NER)
+        \begin{enumerate}
+            \item Tache d' identification et de classification automatique d'entités nommées (noms propres, dates, toponymes...) sur un ensemble de "token"
+        \end{enumerate}
+	\item Étiquetage en parties du discours (POS Tagging)
+        \begin{enumerate}
+            \item Étiquetage en partie du discours des "token" qui composent une phrase, pour identifier les catégories gramaticales et les relations entre les "token" d'une phrase.
+        \end{enumerate}
+    \item Catalogues d'outils 
+        \begin{enumerate}
+            \item [PostLab] catalogue de logiciels et applications académiques d'intelligence artificielle >>> \url{https://www.postlab.fr/}
+            \item [TAPoR 3.0] (Text Analysis Portal for Research) : catalogue d'outils d'analyse et de manipulation de données textuelles pour la recherche. Les utilisateurs proposent des combinaisons d'outils efficaces à certaines approches. Référence toutes les licences attribuées à ces outils. >>> \url{https://tapor.ca/home}
+            \item [L'inventaire des outils de CORLI] Inventaire réunissant une grande variété d'outils de traitement de corpus de langage (écrit/oraux) \url{https://corli.huma-num.fr/inventaire-des-outils/}
+            \item [Scripts du consortium ARIANE] : Chaînes éditoriales : Gestion de format, génération, métadonnées, édition critique, script de validation de format \url{https://axe-1-gt3-outils-et-pratiques-editoriales.gitpages.huma-num.fr/scripts/recensement}
+        \end{enumerate}
+    \item Moissonner des données sur le web
+        \begin{enumerate}
+            \item 2 approches possible : approche "code" ( bs, selenium, wget ... ) et approche interface 
+            \item Crawl par extensions de navigateur : Instant Data Scraper, web scraper.
+            %Outils de moncomble sur les scrapers
+            \item Avantages de l'approche code : permet un examen plus fin et sur un grand nombre de pages, mais plus difficile d'accès
+            \item Avantages de l'approche plug in : très facile à utiliser, mais demande un examen "page par page", moins pratique pour récupérer des grandes quantitées de texte
+        \end{enumerate}
+\end{enumerate}
+
+\begin{itemize}
+    \item [Liens]
+        \url{https://www.geeksforgeeks.org/nlp-libraries-in-python/}%catalogue intéressant de librairies python pour le NLP en anglais
+        \url{https://www.postlab.fr/}\\
+        \autocite{webster1992tokenization} \\%tokenisation
+        \autocite{straka-strakova-2017-tokenizing}\\%postagging
+        \autocite{sun2018overview}\\%ner
+    \item [Mots clé]
+        \gls{tal},\gls{tokenisation},\gls{pos_tagging},\gls{ner},\gls{token}
+\end{itemize}
+
+
+
+\subsection*{Méthodologie de veille en TAL}
+
+\begin{enumerate}
+	\item Un domaine en ébullition
+        \begin{enumerate}
+            \item Linguistique outillée = de plus en plus nécessaire car plus de données
+            \item Omniprésence des modèles de langage dans la presse/réseaux/revues
+            \item Nombreuses application possibles qui peuvent faciliter la vie du chercheur et lui donner de nouveaux axes de recherche sur ses trauvaux.
+            \item Les avancées sont rapides > intérêt certain à la veille sur le domaine
+        \end{enumerate}
+	\item Sources d'informations
+        \begin{titlemize}{Revues}
+            \item \textbf{La revue TAL}: Publiée par l'Association pour le Traitement Automatique des Langues (ATALA), cette revue paraît 3 fois par an sous format éléctronique réunit papiers, thèses et états de l'art sur divers problématiques de l'industrie de la langue en jetant une passerelle entre la linguistique et l'informatique. 
+            \item Les contenus qui y sont publiés sont soumis à la licence Creative Commons Attribution 4.0 International License.
+        \end{titlemize}
+    \item Conférences
+            \begin{titlemize}{Quelles activités au conférences?}
+                \item Shared task : groupe de travail qui se réunit pour réaliser un projet dans un intervalle déterminé, autour d'un sujet défini en amont.
+                
+                \item Workshop/ Ateliers : un atelier collaboratif ayant pour objectif d’échanger sur une thématique précise. À la différence d’une réunion, tous les participants d’un workshop interagissent pour construire une réflexion, trouver une idée, partager un savoir particulier ou débattre sur la problématique définie 
+                \item Demo : présentation d'une solution à un problème par un outil présenté par une entreprise ( état fini ou non )
+            \end{titlemize}
+            \begin{titlemize}{La conférence JEP-TALN RECITAL}
+                \item évènement annuel organisée par l'ATALA réunissant les Journées d'études sur la parole (JEP), axées sur la recherche en phonétique, phonétique et phonologie, la conférence Traitement Automatique du Langage Naturel (TALN), consacrée aux avancées en traitement automatique des langues, et les Rencontres des Etudiants Chercheurs en Informatique pour le Traitement Automatique des Langues (RECITAL) dédiée aux jeunes chercheurs pour présenter leurs travaux de recherche à la communauté.
+                
+                %Conférence de TAL française
+                % Indiquer plutôt l'aide pour trouver les outils.
+                % Les demos et les ateliers, shared task, données
+                \item Elle est l'occasion de réunir chercheurs et industriels, juniors et expérimentés autour des problématiques actuelles du TAL.
+                \item Liens vers les actes publiés chaque année : \url{https://www.atala.org/index.php/-Conference-TALN-RECITAL} 
+            \end{titlemize}
+            \begin{titlemize}{La conférence LREC (International Conference on Language Resources and Evaluation) }
+                  \item Conférence bianuelle organisée par l'ELRA sur des thématiques transverses informatique/linguistique. 
+                  \item organisé par l'ELRA
+                  \item Evenement majeur dans le champs de la linguistique computationelle
+            \end{titlemize}
+            \begin{titlemize}{La conférence ACL}
+                \item Edition américaine + européenne chaque année
+                \item axée linguistique computationelle
+            \end{titlemize}
+	\item Veille automatique  
+        \begin{enumerate}
+            \item Google Scholar
+            \item Collection HAL de l'ATALA : \url{https://hal.science/TALN-RECITAL/browse/period}
+        \end{enumerate}
+        
+\end{enumerate}
+
+\begin{itemize}
+    \item [Liens]
+        \url{http://...}\\
+        \url{http://...}\\
+        \url{http://...}\\
+    \item [Mots clé]
+%        \gls{},\gls{Mot2}
+\end{itemize}
+
+\chapter{Partage et valorisation des données}
+
+
+\section{Entrepôts}
+\gls{nakala},\gls{ortolang}
+	
+\section{Licences et droits}
+
+\subsection{Licences}\label{licences}
+\begin{enumerate}
+	\item La licence CC-by 4.0 (Creative Commons Attribution)\label{cca}
+        \begin{enumerate}
+            \item Permet de partager, copier, distribuer et communiquer les données par tous moyens et sous tous formats, de les réutiliser pour créer de nouveaux jeux de données. Toutes les utilisations, y compris commerciales, sont possibles, sous réserve de créditer les données à leurs créateurs (obligation d’attribution).
+            \item Cette licence est préconisée par un certain nombre d’entrepôts de données.
+            \item Petit-c
+        \end{enumerate}
+	\item La licence CC0 (Creative Commons Public Domain Dedication)\label{cczero}
+        \begin{enumerate}
+            \item permet aux producteurs de données de les placer dans le domaine public, sans aucune restriction de réutilisation.
+            La citation du producteur du jeu de données n’est pas obligatoire, même si, d’un point de vue éthique et scientifique, il est conseillé aux utilisateurs de citer les créateurs originels des données lors de la réutilisation.
+            \item Petit-b
+            \item Petit-c
+        \end{enumerate}
+	\item La Licence ouverte (LO)
+        \begin{enumerate}
+            \item Petit-a
+            \item Petit-b
+            \item Petit-c
+        \end{enumerate}
+\end{enumerate}
+
+\subsection{Droits}
+\begin{titlemize}{Droits d'auteurs}
+    \item Le droit d’auteur est l’ensemble des droits dont dispose un auteur ou ses ayants droit (héritiers, sociétés de production), sur ses œuvres originales définissant notamment l'utilisation et à la réutilisation de ses œuvres sous certaines conditions.
+\end{titlemize}
+\begin{titlemize}{Le droit à la citation courte}\label{droit_citation_courte}
+    \item Le droit à la citation courte est une exception au Code de la propriété intellectuelle, permettant de citer des extraits de textes soumis à des droits d'auteur, "sous réserve que soient indiqués clairement le nom de l'auteur et la source " (Article L122-5 du Code de la propriété intellectuelle)
+    \item Le Code de la propriété intellectuelle admet \textit{"les analyses et courtes citations justifiées par le caractère critique, polémique, pédagogique, scientifique ou d'information de l'oeuvre à laquelle elles sont incorporées"}  (Article L122-5 du Code de la propriété intellectuelle)
+    \item La citation ne doit pas dénaturer le propos de l'auteur, et doit être dans le texte clairement identifiable par l'usage de guillemets ou d'une police différente du corps de texte.
+    \item La loi ne prévoit pas de limite quantifiable en mots ou en caractères pour les, et il est de la responsabilité de l'auteur d'en faire un usage raisonné.
+    \item C'est la proportion de citations dans l'oeuvre qui est étudiée en cas de suspicion de plagiat ( 30 citations courtes peuvent être jugées excessives dans un court article, mais tout à fait acceptable dans une thèse ).  
+    
+\end{titlemize}
+\begin{itemize}
+    \item [Liens]
+        \url{https://coop-ist.cirad.fr/gerer-des-donnees/rendre-publics-ses-jeux-de-donnees/6-les-principales-licences-de-diffusion-des-jeux-de-donnees}\\
+        \url{http://...}\\
+        \url{http://...}\\
+    \item [Mots clé]
+        \gls{Mot1},\gls{Mot2}
+\end{itemize}
+
+\section{Métadonnées}%Ajouter le référencement de scripts par Ariane (lié aux chaînes éditoriales) - pas encore à jour : https://axe-1-gt3-outils-et-pratiques-editoriales.gitpages.huma-num.fr/scripts/recensement
+\begin{enumerate}
+	\item \textbf{Définition}
+        \begin{enumerate}
+            \item C'est une donnée fournissant de l'information sur une autre donnée
+            \item Elle permettent de situer les données en question dans leur contexte (qui, quoi, ou, quand, comment)
+            \item En recherche, il existe des standards de métadonnées, propres à la nature des données et à la pratique de la discipline
+            \item \textbf{XML} : langage de balises, référence pour ce qui est des métadonnées.
+        \end{enumerate}
+	\item \textbf{Standards de métadonnées}
+    \begin{enumerate}
+    \item Le standard a pour objectif de fournir un ensemble d’éléments
+    caractéristiques qui permettent de décrire les productions
+    scientifiques. Ainsi la recherche peut être facilitée en portant sur
+    les critères définis. La description des éléments peut elle-même
+    être précisée par l’emploi de vocabulaires dédiés.
+    Le standard est choisi en fonction de la destination des données,
+    dépôt, publication, archivage, etc. Il peut aussi être spécialisé par
+    discipline, par type de données, etc., ainsi que son vocabulaire.
+        \item Quelques standards de métadonnées (toutes en XML)
+        \begin{enumerate}
+            \item [Dublin Core]%description de documents
+            \begin{itemize}
+                \item Utilisé par tous les gestionnaires de bibliothèques numériques et les plateformes généralistes de dépôt et de publication des données
+                \item Description générale des documents, précisée par de nouveau éléments apportés par le Dublin Core étendu (permet un usage plus adapté aux disciplines spécifiques)
+            \end{itemize}
+            \item [teiHeader]%description des données dans le champs des Humanités Numériques + Dictionnaires
+            \begin{itemize}
+                \item  Le but de la TEI est de " fournir des recommandations pour la création et la gestion sous forme numérique de tout type de données créées et utilisées par les chercheurs en Sciences humaines et sociales " (Lou Bunard, un des fondateur de la TEI)
+                \item Priorité au sens du texte plutôt qu'à son apparence
+                \item Indépendant de tout environnement logiciel
+                \item Conçu par la communauté scientifique qui est aussi en charge de son développement continu
+            \end{itemize}
+            \item [MARC]%description du contenu des bibliothèques
+            \begin{itemize}
+                \item MARC = MAchine-Readable Cataloging
+                \item Il présente de nombreuses variantes (UNIMARC, INTERMARC, USMARC ...)
+                \item 
+            \end{itemize}
+            \item [EAD]%description des archives
+            \begin{itemize}
+                \item Format XML (DTD et schéma) pour l’encodage des descriptions de fonds d’archives \item Également utilisé en bibliothèque pour la description de manuscrits.
+            \end{itemize}
+            \item [DDI]%domaine des sciences sociales, comportementales et économiques
+            \begin{itemize}
+                \item Standard de documentation technique pour décrire et conserver les informations statistiques et plus globalement les informations et données d'enquêtes en sciences humaines et sociales
+            \end{itemize}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+\begin{itemize}
+    \item [Liens]
+        \url{https://doranum.fr/wp-content/uploads/Fiche-Synth%C3%A9tique-M%C3%A9tadonn%C3%A9es.pdf}\\
+        \url{https://axe-1-gt3-outils-et-pratiques-editoriales.gitpages.huma-num.fr/scripts/recensement}\\
+        \url{http://...}\\
+    \item [Mots clé]
+        \gls{metadonnees},\gls{langage_de_balisage},\gls{tei_header}
+\end{itemize}
+
+	
+\section{Identifiant Unique Pérenne}
+ 
+
+\clearpage
+
+
+\section{Data Papers}
+
+\section{Canaux de communication}
+
+\subsection{Listes de diffusion}
+
+\begin{description}
+	\item[parislinguists]
+	Une liste de diffusion pour les linguistes français substituant la liste de Yahoo, où les membres de la liste pourraient échanger des infos sur les conférences, présentations, colloques et postes dans leur domaine.\\
+	Inscription:\url{https://listes.services.cnrs.fr/wws/info/parislinguists}
+	\item[DH]
+	Liste francophone de discussion autour des Digital Humanities (DH)\\
+	Inscription:\url{https://groupes.renater.fr/sympa/info/dh}
+	\item[CORLI]
+	CORLI est un consortium d'Huma-Num
+	Information détaillées disponibles ici: https://corli.huma-num.fr/les-groupes-projets/gp5/
+	Le groupe de travail “annotation” a pour mission de réfléchir aux bonnes pratiques pour la gestion d’une campagne d’annotation, depuis la conception de la campagne jusqu’à la mesure de l’accord inter-annotateur, en passant par la prise en main d’outils d’annotation.\\
+	Inscription:\url{https://groupes.renater.fr/sympa/info/annotation-corli}
+	\item[ln]
+	Liste de diffusion des annonces à destination des chercheurs en Traitement Automatique des Langues  
+	\item[quanti]
+    La liste de discussion "Quanti", créée après la journée d'études "Enseigner le quanti" qui a eu lieu à Paris le 5 juin 2015, a pour vocation d'accueillir les contributions et les échanges de toutes celles et tous ceux qui s'intéressent aux questions d'enseignement des méthodes quantitatives dans les sciences sociales. \\
+    Inscricription:\url{https://groupes.renater.fr/sympa/info/quanti}
+	\item[linguistlist]
+    La linguist list dépend du département de linguistique de l' Indiana University, et vise à fournir un forum d'échange de problématiques et d'information sur la recherche en linguistique. (en anglais). \\
+    Inscription: \url{https://linguistlist.org/}
+    
+\end{description}
+
+\subsection{Consortiums HN}
+
+\begin{enumerate}
+	\item En quoi consistent-ils ?
+        \begin{enumerate}
+            \item Les Consortiums-HN réunissent plusieurs personnels d’unités et équipes de recherche françaises, aux métiers variés (chercheur.e.s, ingénieur.e.s, archivistes, documentalistes, etc.)  autour de thématiques et/ou d’objets communs pour lesquels ils définissent des procédures et standards numériques partagés (méthodes, outils, partages d’expériences).
+            \item L'existence des consortium sont limitées dans le temps
+            \item L'affiliation à un consortium induit la participation active aux projets menés par le groupe de recherche
+            \item Il est recommandé cependant de suivre l'activité des consortiums pour se maintenir informé des avancées (à la manière d'une liste de diffusion
+        \end{enumerate}
+	\item Consortium de l'IR HUMA-NUM axés linguistiques
+        \begin{titlemize}{Ariane (Analyses, Recherches, Intelligence Artificielle et Nouvelles Editions numériques)}
+            \item ARIANE réunit des spécialistes du texte (littéraires, linguistes, historiens…) et de l’informatique en vue de créer un espace de dialogue véritablement interdisciplinaire entre ces deux communautés.
+            \item L’objectif du consortium ARIANE est de progresser dans la connaissance et le raffinement des méthodes informatiques appliquées aux objets et données des sciences humaines et plus particulièrement, des sciences du texte.
+            \item Le groupe de travail sur les métadonnées : reflexions sur les définitions, identifier les besoins chercheurs.
+            \item 
+        \end{titlemize}
+        \begin{titlemize}{CORLI 2 (Corpus, Langues et Interactions 2)}
+            \item CORLI est un réseau de laboratoires et de chercheurs travaillant sur les corpus de langage. Son but est d’offrir à tous des données, des outils, de la documentation et des formations autour de l’utilisation scientifique des corpus de langage en suivant les principes FAIR.
+            \item Ressources utiles sur les outils, formats, bonnes pratiques et aspect juridiques
+        \end{titlemize}
+    \item Renvoi vers le catalogue des consortium HUMA-NUM \ref{liste_ariane_consortium}
+    
+    \begin{comment}
+    \item Consortium purement pluridiciplinaires 
+        \begin{titlemize}{Projets Time Machine}
+            \item Les actions du Consortium Huma-Num PTM ou Projets Time Machine s’articulent autour de la notion de référentiel géohistorique et des données géohistoriques spatialisées.
+            \item Réunit des chercheurs de différents champs disciplinaire des HN (histoire, archéologie, histoire de l’art, géographie...)
+        \end{titlemize}
+    \end{comment}
+    \item Consortiums européens
+        \begin{titlemize}{CLARIN (Common Language Resources and Technology Infrastructure)}
+            \item Consortium européen pour le partage de ressources et d'outils du langage au niveau européen
+            \item Propose des ressources pour la recherche en SH, principalement axées linguistique et traitement automatique du langage
+            \item Différence centre C et centres K : 
+            \begin{itemize}
+                \item Centre B : Les centres techniques, ils sont fournisseurs de services, rattachés à des université ou des instituts académiques. Les centre C sont aussi des centre techniques, dont les métadonnées sont intégrées dans CLARIN, mais autogérées%ai-je bien compris ?
+                \item Centre K : 
+            \end{itemize}
+            \item En france : CORLI= centre K, plus récemment, ORTOLANG= centre C.
+            \item 
+        \end{titlemize}
+        \begin{titlemize}{DARIAH (Digital Research Infrastructure for the Arts and Humanities)}
+            \item Initiative européenne pour developpement et soutien de la recherche dans différentes disciplines des SH numériques (texte, son, image, vidéo).
+            \item Différents centres réunis en catégories de lettres, les centres K (Knowledge Centres) se focalisent sur les ressources linguistiques dans toutes les formes qu'elle peuvent prendre dans les différents domaines de la recherche (
+            \item Réunit 22 pays européens et 197 institutions partenaires sur des projets de recherches variés
+            \item Elle s'inscrit par définition dans la logique science ouverte (libre accès des ressources, certification des entrepots de données, procédure d'archivage, mise à disposition en open source, formats standardisés, interopérabilité)
+            
+        \end{titlemize}
+\end{enumerate}
+
+\begin{itemize}
+    \item [Liens]
+        \url{https://www.huma-num.fr/les-consortiums-hn/}\label{liste_ariane_consortium}\\
+        \url{https://cst-ariane.huma-num.fr/}\\
+        \url{https://corli.huma-num.fr/}\\
+        \url{https://ptm.huma-num.fr/}\\
+        \url{ https://www.dariah.eu/}\\
+        \url{https://clarin-fr.fr/}\\
+       
+    \item [Mots clé]
+%définition à éditer        \gls{consortium_de_recherche},\gls{ptm},\gls{ariane},\gls{ir}
+\end{itemize}
+
+
+\section{Vulgarisation}
+
+\subsection*{Référencement sur des répertoires d'experts}
+\begin{enumerate}
+	\item Youmanity : répertoire d'experts pour les médias \url{https://www.youmanity.org/expertalia-repertoire-dexpert-e-s-pour-les-medias/}
+	\item Expertes.com : annuaire de femmes expertes francophones \url{https://expertes.fr/}
+    \item Article de Julien Longhi à citer ? Celui là ? \autocite{longhi:hal-03547921}
+
+ \subsection*{Podcast}
+
+ \begin{enumerate}
+	\item Vox (EFL)
+        \begin{enumerate}
+            \item Podcast lancé en 2021 à l'initiative du Labex EFL
+            \item Divers podcast qui traitent de sujets de linguistique, et qui met en avant les chercheurs du labex et leurs travaux
+            \item Etablit un pont entre les chercheurs et le gand public
+            \item Moyen de valorisation des travaux de la recherche par excellence
+        \end{enumerate}
+	\item Parler comme jamais
+        \begin{enumerate}
+            \item Podcast animé par Laélia Véron, mélant linguistiques et sujets de société
+            \item Petit-b
+            \item Petit-c
+        \end{enumerate}
+	\item Les podcast linguistiques Radio France
+        \begin{enumerate}
+            \item Podcasts sur des sujets linguistique/humanités, linguistique/société
+        \end{enumerate}
+\end{enumerate}
+
+\begin{itemize}
+    \item [Liens]
+        \url{https://www.radiofrance.fr/sujets/langues-linguistique}\\
+        \url{https://www.labex-efl.fr/post/vox-le-podcast-du-labex-efl-qui-vous-parle-de-linguistique}\\
+        \url{https://www.binge.audio/podcast/parler-comme-jamais}\\
+    \item [Mots clé]
+        \gls{archive}
+\end{itemize}
+
+
+ %https://podcast.ausha.co/vox-podcast-labex-efl
+ 
+
+\end{enumerate}
+
+
+
+\begin{comment}
+\chapter*{Acteurs (à répartir dans les différentes parties)}
+\section{Nakala} 
+\section{ORTOLANG}
+\section{OPIDoR}
+\section{CNRS}
+\section{Recherche Data Gouv}
+\section{DARIAH}
+\section{CLARIN
+}
+\end{comment}
+
+\printindex
+\printnoidxglossaries
+\printbibliography
+
+\end{document}
