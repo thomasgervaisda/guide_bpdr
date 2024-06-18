@@ -42,14 +42,14 @@
 \geometry{hmargin=2.5cm,vmargin=1.5cm}
 
 %Bibliographie
-\bibliography{ressources/biblio.bib}
+\bibliography{../ressources/biblio.bib}
 
 %Index
 \makeindex 
 
 %Glossaire
 \makenoidxglossaries
-\loadglsentries{ressources/glossaire}
+\loadglsentries{../ressources/glossaire.tex}
 
 \title{Guide de bonnes pratiques de partage et de valorisation des données linguistiques}
 \author{Thomas Gervais d'Aldin}
@@ -66,6 +66,7 @@
 
 %Table des matières
 \tableofcontents
+
 \clearpage
 
 
@@ -352,7 +353,7 @@ Beaucoup d'infos sur le site de l'ANR
         \url{http://...}\\
         \url{http://...}\\
     \item [Mots clé]
-        \gls{Mot1},\gls{Mot2}
+%        \gls{Mot1},\gls{Mot2}
 \end{itemize}
 
 
@@ -1001,14 +1002,26 @@ Définition de la textometrie : La textométrie est l’application de calculs s
             \item [L'inventaire des outils de CORLI] Inventaire réunissant une grande variété d'outils de traitement de corpus de langage (écrit/oraux) \url{https://corli.huma-num.fr/inventaire-des-outils/}
             \item [Scripts du consortium ARIANE] : Chaînes éditoriales : Gestion de format, génération, métadonnées, édition critique, script de validation de format \url{https://axe-1-gt3-outils-et-pratiques-editoriales.gitpages.huma-num.fr/scripts/recensement}
         \end{enumerate}
-    \item Moissonner des données sur le web
-        \begin{enumerate}
-            \item 2 approches possible : approche "code" ( bs, selenium, wget ... ) et approche interface 
+    \item Récupérer des données textuelles issues du web
+        \begin{titlemize}{\textit{Webscrapping} et \textit{webcrawling}}
+            \item Webcrawling (moissonage) : Consiste à récupérer en masse des données depuis des pages internet, par un système de sauts de liens en liens
+            \item Webscraping (grattage) : outil spécifiquement conçu pour l'extraction des données d'un site web ciblé
+        \end{titlemize}
+        \begin{titlemize}{Méthodes}
+             \item 2 approches possible : approche "code" ( bs, selenium, wget ... ) et approche interface 
             \item Crawl par extensions de navigateur : Instant Data Scraper, web scraper.
             %Outils de moncomble sur les scrapers
             \item Avantages de l'approche code : permet un examen plus fin et sur un grand nombre de pages, mais plus difficile d'accès
-            \item Avantages de l'approche plug in : très facile à utiliser, mais demande un examen "page par page", moins pratique pour récupérer des grandes quantitées de texte
-        \end{enumerate}
+            \item Avantages de l'approche plug in : très facile à utiliser, mais demande un examen "page par page", moins pratique pour récupérer des grandes quantités de texte.
+        \end{titlemize}
+        \begin{titlemize}{Sur le plan légal}
+            \item Le scraping est légal si les données récoltées sont publiques
+            \item Il est encadré par le RGPD, attention aux données personnelles
+            \item Il faut se référer aux \gls{cgu} du site que l'on veut examiner pour savoir dans un premier temps si il est possible de le faire, et dans un second temps dans quelles conditions.
+            \item Les sites se prémunissent de plus en plus du scraping en l'empéchant ou en l'encadrant
+            \item Certains sites proposent des interfaces API permettant de collecter des données en toute conformité à leurs CGU et en toute légalité. (ex:Twitter ...)
+            \item Il est tout à fait possible de demander l'autorisation à/aux auteur(s) d'utiliser leurs données dans le cadre de travaux de recherche.
+        \end{titlemize}
 \end{enumerate}
 
 \begin{itemize}
@@ -1085,7 +1098,8 @@ Définition de la textometrie : La textométrie est l’application de calculs s
 
 
 \section{Entrepôts}
-\gls{nakala},\gls{ortolang}
+
+%\gls{nakala},\gls{ortolang}
 	
 \section{Licences et droits}
 
@@ -1130,7 +1144,7 @@ Définition de la textometrie : La textométrie est l’application de calculs s
         \url{http://...}\\
         \url{http://...}\\
     \item [Mots clé]
-        \gls{Mot1},\gls{Mot2}
+%        \gls{Mot1},\gls{Mot2}
 \end{itemize}
 
 \section{Métadonnées}%Ajouter le référencement de scripts par Ariane (lié aux chaînes éditoriales) - pas encore à jour : https://axe-1-gt3-outils-et-pratiques-editoriales.gitpages.huma-num.fr/scripts/recensement
@@ -1251,14 +1265,6 @@ Définition de la textometrie : La textométrie est l’application de calculs s
             \item Ressources utiles sur les outils, formats, bonnes pratiques et aspect juridiques
         \end{titlemize}
     \item Renvoi vers le catalogue des consortium HUMA-NUM \ref{liste_ariane_consortium}
-    
-    \begin{comment}
-    \item Consortium purement pluridiciplinaires 
-        \begin{titlemize}{Projets Time Machine}
-            \item Les actions du Consortium Huma-Num PTM ou Projets Time Machine s’articulent autour de la notion de référentiel géohistorique et des données géohistoriques spatialisées.
-            \item Réunit des chercheurs de différents champs disciplinaire des HN (histoire, archéologie, histoire de l’art, géographie...)
-        \end{titlemize}
-    \end{comment}
     \item Consortiums européens
         \begin{titlemize}{CLARIN (Common Language Resources and Technology Infrastructure)}
             \item Consortium européen pour le partage de ressources et d'outils du langage au niveau européen
@@ -1275,8 +1281,7 @@ Définition de la textometrie : La textométrie est l’application de calculs s
             \item Initiative européenne pour developpement et soutien de la recherche dans différentes disciplines des SH numériques (texte, son, image, vidéo).
             \item Différents centres réunis en catégories de lettres, les centres K (Knowledge Centres) se focalisent sur les ressources linguistiques dans toutes les formes qu'elle peuvent prendre dans les différents domaines de la recherche (
             \item Réunit 22 pays européens et 197 institutions partenaires sur des projets de recherches variés
-            \item Elle s'inscrit par définition dans la logique science ouverte (libre accès des ressources, certification des entrepots de données, procédure d'archivage, mise à disposition en open source, formats standardisés, interopérabilité)
-            
+            \item Elle s'inscrit par définition dans la logique science ouverte (libre accès des ressources, certification des entrepots de données, procédure d'archivage, mise à disposition en open source, formats standardisés, interopérabilité)            
         \end{titlemize}
 \end{enumerate}
 
@@ -1337,7 +1342,7 @@ Définition de la textometrie : La textométrie est l’application de calculs s
  %https://podcast.ausha.co/vox-podcast-labex-efl
  
 
-\end{enumerate}
+
 
 
 
